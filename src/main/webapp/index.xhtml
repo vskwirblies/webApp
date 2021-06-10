@@ -1,0 +1,68 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:define name="customCss">
+		<h:outputStylesheet library="css" name="indexStyles.css" />
+	</ui:define>
+
+	<ui:define name="content">
+		<section id="section-one">
+			<div class="container-fluid bg-secondary text-light pt-5">
+				<div class="jumbotron bg-secondary text-center">
+					<h1>Hello world, this is JSF and Bootstrap!</h1>
+					<h6>#{messageBean.message}</h6>
+				</div>
+			</div>
+		</section>
+
+		<section id="section-two">
+			<div class="container-fluid px-5 py-5">
+				<div class="row text-center">
+					<div class="col-lg-6">
+						<p>Javascript clock:</p>
+						<h2 class="clock">TheTime</h2>
+					</div>
+					<div class="col-lg-6">
+						<p>Primefaces spinner:</p>
+						<p:spinner />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="section-three" class="px-3 py-3">
+			<div class="container-fluid mb-5">
+				<div class="row">
+					<div class="col-lg-6">
+						<p:dataTable var="person" value="#{personBean.persons}">
+							<p:column headerText="First name">
+								<h:outputText value="#{person.firstName}" />
+							</p:column>
+							<p:column headerText="Last name">
+								<h:outputText value="#{person.lastName}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+					<div class="col-lg-6 text-center">
+						<h:form>
+							<h:outputText value='"#{messageBean.currentMessage}"'
+								id="id-text" />
+							<br />
+							<br />
+							<p:commandButton value="Generate message" id="ajax"
+								update="id-text" action="#{messageBean.change}" />
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</ui:define>
+	
+	<ui:define name="customJs">
+		<h:outputScript library="js" name="clock.js" />
+	</ui:define>
+</ui:composition>

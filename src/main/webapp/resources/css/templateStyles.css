@@ -1,0 +1,16 @@
+html {
+	scroll-behavior: smooth;
+}
+
+.bg-transparency {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+}
+
+.jumbotron {
+	border-radius: 0 !important;
+}
+
+.fa-heart {
+	color: red;
+}
